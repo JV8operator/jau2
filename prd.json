@@ -1,0 +1,253 @@
+{
+    "product_name": "AI Placement Coach",
+    "version": "2.1",
+    "goal": "Build a professional AI-driven system that predicts placement chances and guides students with clear, actionable steps to improve outcomes",
+    "target_users": [
+        "Engineering students (Tier 2/3 colleges)",
+        "Pre-final and final year students"
+    ],
+    "core_problem": "Students lack clarity on what specific actions to take to improve placement chances",
+    "solution": "Provide prediction + gap analysis + step-by-step roadmap so users know exactly what to do next",
+    "key_principle": "Action over information — every output must lead to a next step",
+    "features": [
+        "User Authentication",
+        "Placement Probability Prediction",
+        "Readiness Score (Normalized 0-100)",
+        "Skill Gap Analysis",
+        "Personalized Task-Based Roadmap",
+        "Benchmarking vs Placed Students",
+        "Actionable Insights Engine"
+    ],
+    "system_architecture": {
+        "frontend": "React",
+        "backend": "Flask API",
+        "ml_layer": "scikit-learn",
+        "database": "SQLite (for users) + CSV (for ML data)"
+    },
+    "modules": [
+        {
+            "name": "Authentication Module",
+            "description": "Allow users to sign up and log in",
+            "inputs": [
+                "email",
+                "password"
+            ],
+            "output": "authenticated session",
+            "success_criteria": "User can log in and access dashboard securely"
+        },
+        {
+            "name": "Input Module",
+            "description": "Collect student profile data",
+            "inputs": [
+                "CGPA",
+                "Internships",
+                "Projects",
+                "Certificates",
+                "Skills (list)",
+                "Target Role (optional)"
+            ],
+            "output": "validated JSON payload",
+            "success_criteria": "All inputs validated and stored without errors"
+        },
+        {
+            "name": "Placement Prediction Engine",
+            "description": "Predict placement probability using real dataset",
+            "inputs": [
+                "student features"
+            ],
+            "output": {
+                "placement_probability": "percentage"
+            },
+            "success_criteria": "Prediction reflects realistic placement likelihood"
+        },
+        {
+            "name": "Readiness Scoring Engine",
+            "description": "Compute normalized readiness score",
+            "inputs": [
+                "CGPA",
+                "internships",
+                "projects",
+                "skills",
+                "model output"
+            ],
+            "output": {
+                "readiness_score": "0-100",
+                "category": "Low / Moderate / High"
+            },
+            "success_criteria": "Score is consistent, interpretable, and capped at 100"
+        },
+        {
+            "name": "Skill Gap Engine",
+            "description": "Compare user skills with required skills",
+            "inputs": [
+                "user skills",
+                "skills dataset"
+            ],
+            "output": {
+                "missing_skills": [],
+                "matched_skills": [],
+                "skill_match_percentage": "percentage"
+            },
+            "success_criteria": "Accurately identifies missing and matched skills"
+        },
+        {
+            "name": "Benchmarking Engine",
+            "description": "Compare user with placed students using dataset averages",
+            "inputs": [
+                "user profile",
+                "dataset"
+            ],
+            "output": {
+                "comparison": {
+                    "cgpa_gap": "",
+                    "internship_gap": "",
+                    "project_gap": ""
+                }
+            },
+            "success_criteria": "User clearly understands how they compare to placed students"
+        },
+        {
+            "name": "Roadmap Generator",
+            "description": "Generate actionable weekly plan",
+            "inputs": [
+                "missing skills",
+                "user profile"
+            ],
+            "output": {
+                "roadmap": [
+                    {
+                        "week": "Week 1",
+                        "tasks": [
+                            "Complete Python basics",
+                            "Build 1 mini project"
+                        ]
+                    }
+                ]
+            },
+            "success_criteria": "Roadmap is structured, realistic, and ordered"
+        },
+        {
+            "name": "Insight Engine",
+            "description": "Show how actions impact placement probability",
+            "inputs": [
+                "model feature importance"
+            ],
+            "output": {
+                "insights": [
+                    "Adding 1 internship may increase probability by X%",
+                    "Improving CGPA to 8+ significantly increases chances"
+                ]
+            },
+            "success_criteria": "Insights are simple, clear, and actionable"
+        }
+    ],
+    "api_endpoints": [
+        {
+            "endpoint": "/auth/signup",
+            "method": "POST",
+            "output": "user created"
+        },
+        {
+            "endpoint": "/auth/login",
+            "method": "POST",
+            "output": "auth token/session"
+        },
+        {
+            "endpoint": "/analyze",
+            "method": "POST",
+            "input": "student profile JSON",
+            "output": {
+                "placement_probability": "",
+                "readiness_score": "",
+                "missing_skills": [],
+                "roadmap": [],
+                "benchmarks": {},
+                "insights": []
+            }
+        }
+    ],
+    "frontend_pages": [
+        {
+            "name": "Landing Page",
+            "goal": "Explain product and drive user to signup/login"
+        },
+        {
+            "name": "Auth Page",
+            "goal": "Login/Signup UI"
+        },
+        {
+            "name": "Input Page",
+            "goal": "Collect student data"
+        },
+        {
+            "name": "Result Dashboard",
+            "goal": "Display results clearly with focus on next steps"
+        }
+    ],
+    "ui_components": [
+        "AuthForm",
+        "InputForm",
+        "ScoreCard",
+        "SkillGapList",
+        "RoadmapTimeline",
+        "BenchmarkCard",
+        "InsightsPanel"
+    ],
+    "priorities": [
+        "Accuracy of prediction",
+        "Clarity of roadmap",
+        "User understanding of next steps"
+    ],
+    "milestones": [
+        {
+            "phase": "Phase 1 (Days 1-5) - Core Backend Fix",
+            "tasks": [
+                "Clean dataset properly",
+                "Train placement prediction model",
+                "Remove hardcoded inputs",
+                "Normalize readiness score"
+            ],
+            "outcome": "Reliable backend logic"
+        },
+        {
+            "phase": "Phase 2 (Days 6-10) - Intelligence Layer",
+            "tasks": [
+                "Skill gap engine",
+                "Benchmarking logic",
+                "Roadmap generator"
+            ],
+            "outcome": "Actionable insights system"
+        },
+        {
+            "phase": "Phase 3 (Days 11-14) - Frontend",
+            "tasks": [
+                "React UI setup",
+                "Input form",
+                "Dashboard UI",
+                "API integration"
+            ],
+            "outcome": "Functional user interface"
+        },
+        {
+            "phase": "Phase 4 (Days 15-18) - Polish & Auth",
+            "tasks": [
+                "Authentication system",
+                "Validation",
+                "UI improvements",
+                "Testing",
+                "Optional deployment"
+            ],
+            "outcome": "Professional-grade product"
+        }
+    ],
+    "optional_features_if_time_allows": [
+        "Company-specific preparation",
+        "Salary prediction",
+        "Better charts"
+    ],
+    "final_output_expectation": {
+        "user_experience": "User inputs data and immediately understands their status and exact next steps",
+        "differentiator": "Clear roadmap and actionable guidance",
+        "success_metric": "User can answer: What should I do next?"
+    }
+}

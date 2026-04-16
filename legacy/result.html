@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Analysis Result</title>
+    <style>
+        :root {
+            --bg: #f5efe5;
+            --panel: #fffaf2;
+            --text: #23303d;
+            --muted: #5f6c78;
+            --accent: #1f7a5c;
+            --accent-soft: rgba(31, 122, 92, 0.12);
+            --border: #dcc9aa;
+            --shadow: 0 16px 40px rgba(78, 56, 34, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top right, rgba(223, 170, 55, 0.2), transparent 28%),
+                linear-gradient(180deg, #f3ebdf 0%, #f9f6ef 100%);
+            color: var(--text);
+            padding: 32px 18px;
+        }
+
+        .wrap {
+            width: min(920px, 100%);
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+        }
+
+        .subtext {
+            margin: 0 0 24px;
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .stat {
+            padding: 18px;
+            border-radius: 18px;
+            background: #fff;
+            border: 1px solid #eadcc6;
+        }
+
+        .stat span {
+            display: block;
+            color: var(--muted);
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+        }
+
+        .stat strong {
+            font-size: 1.25rem;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .list-box {
+            padding: 18px;
+            border-radius: 18px;
+            background: #fff;
+            border: 1px solid #eadcc6;
+            margin-bottom: 14px;
+        }
+
+        .list-box h3 {
+            margin: 0 0 10px;
+        }
+
+        .list-box p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .actions a {
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: #fff;
+        }
+
+        .actions a.primary {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        @media (max-width: 700px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="wrap">
+        <section class="card">
+            <h1>Placement Analysis Result</h1>
+            <p class="subtext">Here’s a quick read on the profile based on academic score, internships, branch skill demand, and the trained aptitude model.</p>
+
+            <div class="pill">{{ analysis.message }}</div>
+
+            <div class="grid">
+                <div class="stat">
+                    <span>Readiness Score</span>
+                    <strong>{{ analysis.readiness }}%</strong>
+                </div>
+                <div class="stat">
+                    <span>Placement Probability</span>
+                    <strong>{{ probability }}</strong>
+                </div>
+                <div class="stat">
+                    <span>Expected Salary Range</span>
+                    <strong>{{ salary }}</strong>
+                </div>
+                <div class="stat">
+                    <span>Branch Skill Match Focus</span>
+                    <strong>{{ analysis.top_required_skills }}</strong>
+                </div>
+            </div>
+
+            <div class="list-box">
+                <h3>Missing Skills</h3>
+                <p>{{ analysis.missing_skills }}</p>
+            </div>
+
+            <div class="list-box">
+                <h3>Recommended Skills</h3>
+                <p>{{ recommendations }}</p>
+            </div>
+
+            <div class="actions">
+                <a class="primary" href="/">Analyze Another</a>
+                <a href="/dashboard">View Dashboard</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

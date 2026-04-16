@@ -1,0 +1,19 @@
+[project]
+name = "jau2"
+version = "0.1.0"
+description = "Placement Readiness Analyzer API"
+requires-python = ">=3.9"
+dependencies = [
+    "Flask",
+    "pandas",
+    "matplotlib",
+    "joblib",
+    "scikit-learn",
+    "numpy",
+    "flask-cors",
+    "PyJWT",
+    "cryptography"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]

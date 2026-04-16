@@ -1,0 +1,12 @@
+Flask
+pandas
+matplotlib
+joblib
+scikit-learn
+numpy
+flask-cors
+PyJWT
+cryptography
+PyPDF2
+gunicorn
+werkzeug

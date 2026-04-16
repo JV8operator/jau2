@@ -1,0 +1,38 @@
+{
+    "Python": {
+        "duration_weeks": 2,
+        "resources": ["freeCodeCamp Python Basics", "Corey Schafer YouTube Series"]
+    },
+    "SQL": {
+        "duration_weeks": 2,
+        "resources": ["SQLBolt", "LeetCode Database problems"]
+    },
+    "Data Structures": {
+        "duration_weeks": 4,
+        "resources": ["NeetCode 150", "GeeksforGeeks DSA"]
+    },
+    "DSA": {
+        "duration_weeks": 4,
+        "resources": ["NeetCode 150", "GeeksforGeeks DSA"]
+    },
+    "Machine Learning": {
+        "duration_weeks": 3,
+        "resources": ["Andrew Ng ML Course", "Kaggle Micro-courses"]
+    },
+    "Cloud": {
+        "duration_weeks": 2,
+        "resources": ["AWS Cloud Practitioner basics", "ACloudGuru"]
+    },
+    "Java": {
+        "duration_weeks": 3,
+        "resources": ["Mooc.fi Java Programming", "Java Brains"]
+    },
+    "Communication": {
+        "duration_weeks": 1,
+        "resources": ["Mock Interviews (Pramp/Interviewing.io)", "STAR method practice"]
+    },
+    "Problem Solving": {
+        "duration_weeks": 2,
+        "resources": ["HackerRank problem solving track"]
+    }
+}

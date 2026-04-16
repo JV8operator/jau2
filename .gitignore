@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Agent / IDE config
+.agent/
+.data/
+.vscode/
+.idea/
+
+# Node
+node_modules/
+.next/
+out/
+
+# Environment
+.env
+.env.local
+.env.production.local
+
+# Data (keep CSVs, ignore user db)
+backend/data/users.db
+
+# OS
+.DS_Store
+Thumbs.db
+*.lnk
+*.lnk.download
+
+# Misc
+uv.lock
+*.log
+
+# Test PDF
+test_certificate_coursera_ml.pdf
+
+# Lock file
+package-lock.json
