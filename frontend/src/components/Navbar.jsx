@@ -48,22 +48,27 @@ export default function Navbar() {
             <>
               <Link href="/analyze" style={{
                 fontFamily: 'var(--font-ui)',
-                color: 'var(--ink-subtle)',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                letterSpacing: '0.02em',
+                color: 'var(--white)',
+                fontSize: '1rem',
+                fontWeight: 500,
+                letterSpacing: '0.01em',
+                opacity: 0.9,
               }}>
                 Analyze
               </Link>
               <button
                 onClick={handleLogout}
                 style={{
-                  background: 'none', border: 'none',
+                  background: 'rgba(255, 255, 255, 0.1)', 
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: '24px',
+                  padding: '6px 16px',
                   fontFamily: 'var(--font-ui)',
-                  color: 'var(--ink-subtle)',
+                  color: 'var(--white)',
                   cursor: 'pointer',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
+                  fontSize: '0.95rem',
+                  fontWeight: 500,
+                  transition: 'all 0.2s',
                 }}
               >
                 Logout
