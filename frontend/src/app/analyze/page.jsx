@@ -244,7 +244,7 @@ export default function InputPage() {
     alignItems: 'center', marginBottom: '10px'
   };
   const sectionLabelStyle = {
-    fontFamily: 'var(--font-ui)',
+    fontFamily: "'Times New Roman', Times, serif",
     fontSize: '0.72rem', fontWeight: 600, color: 'var(--ink-subtle)',
     textTransform: 'uppercase', letterSpacing: '0.08em'
   };

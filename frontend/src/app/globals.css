@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
-
 :root {
   --ink: #0F1117;
   --ink-muted: #4A4F5E;
@@ -13,9 +11,9 @@
   --warning: #B85C00;
   --danger: #C0392B;
 
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-ui: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Times New Roman', Times, serif;
+  --font-ui: 'Times New Roman', Times, serif;
+  --font-body: 'Times New Roman', Times, serif;
 
   --radius: 8px;
   --radius-sm: 6px;
@@ -33,7 +31,7 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: 'Times New Roman', Times, serif;
   background-color: var(--surface);
   color: var(--ink);
   min-height: 100vh;
@@ -44,14 +42,14 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: var(--font-display);
+  font-family: 'Times New Roman', Times, serif;
   color: var(--ink);
   font-weight: 400;
   line-height: 1.2;
 }
 
 h4, h5, h6 {
-  font-family: var(--font-ui);
+  font-family: 'Times New Roman', Times, serif;
   color: var(--ink);
   font-weight: 600;
 }
@@ -73,15 +71,15 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 22px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-ui);
-  font-weight: 600;
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
+  padding: 10px 24px;
+  border-radius: var(--radius-sm);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: all 0.15s ease;
-  border: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
   text-align: center;
 }
 
@@ -127,7 +125,7 @@ a {
 .input-group label {
   display: block;
   margin-bottom: 6px;
-  font-family: var(--font-ui);
+  font-family: 'Times New Roman', Times, serif;
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--ink-subtle);
@@ -142,7 +140,7 @@ a {
   background: var(--white);
   border: 1px solid #ddd8ce;
   color: var(--ink);
-  font-family: var(--font-body);
+  font-family: 'Times New Roman', Times, serif;
   font-size: 0.92rem;
   transition: border-color 0.15s ease;
   -webkit-appearance: none;
@@ -161,7 +159,7 @@ a {
 
 /* Utility label */
 .section-label {
-  font-family: var(--font-ui);
+  font-family: 'Times New Roman', Times, serif;
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -174,7 +172,7 @@ a {
   display: inline-block;
   padding: 4px 12px;
   border-radius: var(--radius-pill);
-  font-family: var(--font-ui);
+  font-family: 'Times New Roman', Times, serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.02em;

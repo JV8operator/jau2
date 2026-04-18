@@ -122,7 +122,7 @@ export default function AuthPage() {
               background: 'none', border: 'none',
               color: 'var(--accent)', fontWeight: 500,
               cursor: 'pointer', fontSize: '0.85rem',
-              fontFamily: 'var(--font-body)',
+              fontFamily: "'Times New Roman', Times, serif",
             }}
           >
             {isLogin ? 'Sign Up' : 'Sign In'}

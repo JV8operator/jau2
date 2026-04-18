@@ -167,7 +167,7 @@ export default function ResultsPage() {
                   <div key={metric} style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid #ddd8ce' }}>
                     <div style={{ textTransform: 'capitalize', color: 'var(--ink-muted)', fontSize: '0.8rem', marginBottom: '6px' }}>{metric}</div>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-                      <div style={{ fontSize: '1.5rem', fontWeight: '700', fontFamily: 'Outfit' }}>{data.benchmarks.placed_averages[metric]}</div>
+                      <div style={{ fontSize: '1.5rem', fontWeight: '700', fontFamily: "'Times New Roman', Times, serif" }}>{data.benchmarks.placed_averages[metric]}</div>
                       <div style={{ color: gapColor, fontSize: '0.82rem', fontWeight: 600 }}>
                         {gapText}{data.benchmarks.gaps[metric]} vs avg
                       </div>
@@ -197,7 +197,7 @@ export default function ResultsPage() {
                 />
               </svg>
               <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit', letterSpacing: '-0.02em' }}>{data.readiness_score}</span>
+                <span style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: "'Times New Roman', Times, serif", letterSpacing: '-0.02em' }}>{data.readiness_score}</span>
               </div>
             </div>
             

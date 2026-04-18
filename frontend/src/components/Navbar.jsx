@@ -28,7 +28,7 @@ export default function Navbar() {
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Link href="/" style={{
-          fontFamily: 'var(--font-display)',
+          fontFamily: "'Times New Roman', Times, serif",
           fontSize: '1.3rem',
           color: 'var(--white)',
           display: 'flex',
@@ -47,7 +47,7 @@ export default function Navbar() {
           {isClient && token ? (
             <>
               <Link href="/analyze" style={{
-                fontFamily: 'var(--font-ui)',
+                fontFamily: "'Times New Roman', Times, serif",
                 color: 'var(--white)',
                 fontSize: '1rem',
                 fontWeight: 500,
@@ -62,7 +62,7 @@ export default function Navbar() {
                   background: 'none',
                   border: 'none',
                   padding: 0,
-                  fontFamily: 'var(--font-ui)',
+                  fontFamily: "'Times New Roman', Times, serif",
                   color: 'var(--white)',
                   cursor: 'pointer',
                   fontSize: '1rem',
