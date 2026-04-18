@@ -59,16 +59,16 @@ export default function Navbar() {
               <button
                 onClick={handleLogout}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.1)', 
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  borderRadius: '24px',
-                  padding: '6px 16px',
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
                   fontFamily: 'var(--font-ui)',
                   color: 'var(--white)',
                   cursor: 'pointer',
-                  fontSize: '0.95rem',
+                  fontSize: '1rem',
                   fontWeight: 500,
-                  transition: 'all 0.2s',
+                  letterSpacing: '0.01em',
+                  opacity: 0.9,
                 }}
               >
                 Logout
