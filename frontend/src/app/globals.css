@@ -1,22 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  --bg-color: #f5f6f8;
-  --panel-bg: #ffffff;
-  --panel-border: #e0e3e8;
-  --text-primary: #111827;
-  --text-secondary: #5f6b7a;
-  --accent-primary: #1a56db;
-  --accent-hover: #1648b8;
-  --success: #059669;
-  --warning: #d97706;
-  --danger: #dc2626;
-  --highlight: #0d9488;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --ink: #0F1117;
+  --ink-muted: #4A4F5E;
+  --ink-subtle: #8C92A0;
+  --white: #FDFCFA;
+  --surface: #F7F5F0;
+  --surface-2: #EEEBE3;
+  --accent: #2E5BFF;
+  --accent-light: #A8BFFF;
+  --success: #1A7A4A;
+  --warning: #B85C00;
+  --danger: #C0392B;
+
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-ui: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --radius: 8px;
   --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-pill: 999px;
 }
 
 * {
@@ -25,19 +28,32 @@
   padding: 0;
 }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-primary);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', sans-serif;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
+body {
+  font-family: var(--font-body);
+  background-color: var(--surface);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-ui);
+  color: var(--ink);
+  font-weight: 600;
 }
 
 a {
@@ -45,123 +61,142 @@ a {
   text-decoration: none;
 }
 
-/* Base Components */
+/* Layout */
 .container {
-  max-width: 1120px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  border-radius: var(--radius-sm);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: all 0.15s ease;
   border: none;
   text-align: center;
-  font-size: 0.9rem;
-  letter-spacing: 0.01em;
 }
 
 .btn-primary {
-  background: var(--accent-primary);
-  color: #fff;
+  background: var(--accent);
+  color: var(--white);
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
+  background: #2249d9;
 }
 
 .btn-primary:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--panel-border);
+  background: var(--surface-2);
+  color: var(--ink);
+  border: 1px solid #ddd8ce;
 }
 
 .btn-secondary:hover {
-  background: var(--bg-color);
-  border-color: #c8cdd4;
+  background: #e5e1d8;
 }
 
+/* Auth form */
 .auth-form-container {
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 36px;
-  background: var(--panel-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 32px 28px;
+  background: var(--white);
+  border: 1px solid #e5e1d8;
+  border-radius: var(--radius);
 }
 
+/* Inputs */
 .input-group {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .input-group label {
   display: block;
   margin-bottom: 6px;
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-subtle);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 .input-control {
   width: 100%;
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  background: #fff;
-  border: 1px solid #d1d5db;
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  border: 1px solid #ddd8ce;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
   transition: border-color 0.15s ease;
-  font-size: 0.95rem;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .input-control:focus {
   outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.12);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(46, 91, 255, 0.1);
 }
 
 .input-control::placeholder {
-  color: #9ca3af;
+  color: var(--ink-subtle);
 }
 
-/* Panel utility */
-.panel {
-  background: var(--panel-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius-lg);
-  padding: 28px;
+/* Utility label */
+.section-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-subtle);
 }
 
-/* Pill tags */
+/* Tags / badges */
 .tag {
   display: inline-block;
-  padding: 3px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
-.tag-success {
-  background: rgba(5, 150, 105, 0.1);
-  color: var(--success);
+/* Cards */
+.card {
+  background: var(--white);
+  border: 1px solid #e5e1d8;
+  border-radius: var(--radius);
+  padding: 24px;
 }
 
-.tag-danger {
-  background: rgba(220, 38, 38, 0.1);
-  color: var(--danger);
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .auth-form-container {
+    margin: 0 16px;
+    max-width: 100%;
+    padding: 28px 20px;
+  }
 }

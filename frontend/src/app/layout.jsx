@@ -2,7 +2,7 @@ import './globals.css'
 import Navbar from '../components/Navbar'
 
 export const metadata = {
-  title: 'Placement Readiness Analyzer',
+  title: 'Career Path Analyzer',
   description: 'AI-driven placement prediction and skill gap analysis',
 }
 

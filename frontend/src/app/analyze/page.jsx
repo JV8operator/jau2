@@ -228,14 +228,14 @@ export default function InputPage() {
   const noneToggleStyle = {
     display: 'flex', alignItems: 'center', gap: '10px',
     padding: '10px 14px', borderRadius: 'var(--radius-sm)',
-    border: '1px solid var(--panel-border)',
-    background: 'var(--bg-color)', cursor: 'pointer',
+    border: '1px solid #ddd8ce',
+    background: 'var(--surface)', cursor: 'pointer',
     transition: 'all 0.15s ease', fontSize: '0.85rem',
-    color: 'var(--text-secondary)', userSelect: 'none'
+    color: 'var(--ink-muted)', userSelect: 'none'
   };
   const noneToggleActiveStyle = {
     ...noneToggleStyle,
-    background: 'rgba(220, 38, 38, 0.04)',
+    background: 'rgba(192, 57, 43, 0.04)',
     borderColor: 'var(--danger)',
     color: 'var(--danger)'
   };
@@ -244,12 +244,13 @@ export default function InputPage() {
     alignItems: 'center', marginBottom: '10px'
   };
   const sectionLabelStyle = {
-    fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)',
-    textTransform: 'uppercase', letterSpacing: '0.04em'
+    fontFamily: 'var(--font-ui)',
+    fontSize: '0.72rem', fontWeight: 600, color: 'var(--ink-subtle)',
+    textTransform: 'uppercase', letterSpacing: '0.08em'
   };
   const cardStyle = {
-    background: 'var(--bg-color)', padding: '14px',
-    borderRadius: 'var(--radius-md)', border: '1px solid var(--panel-border)'
+    background: 'var(--surface)', padding: '14px',
+    borderRadius: 'var(--radius)', border: '1px solid #ddd8ce'
   };
   const cardHeaderStyle = {
     display: 'flex', justifyContent: 'space-between',
@@ -272,8 +273,8 @@ export default function InputPage() {
   return (
     <div className="container" style={{ padding: '48px 24px' }}>
       <div style={{ maxWidth: '760px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '8px', letterSpacing: '-0.02em' }}>Analyze Profile</h1>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '0.95rem' }}>
+        <h1 style={{ marginBottom: '8px' }}>Analyze Profile</h1>
+        <p style={{ color: 'var(--ink-muted)', marginBottom: '32px', fontSize: '0.95rem' }}>
           Enter your academic and skill details to generate a placement readiness report.
         </p>
 
@@ -290,9 +291,9 @@ export default function InputPage() {
           onDrop={handleDrop}
           onClick={() => fileInputRef.current.click()}
           style={{
-            background: isDragOver ? 'rgba(26, 86, 219, 0.03)' : 'var(--panel-bg)',
-            border: `1.5px dashed ${isDragOver ? 'var(--accent-primary)' : '#c8cdd4'}`,
-            borderRadius: 'var(--radius-md)',
+            background: isDragOver ? 'rgba(46, 91, 255, 0.03)' : 'var(--white)',
+            border: `1.5px dashed ${isDragOver ? 'var(--accent)' : '#ddd8ce'}`,
+            borderRadius: 'var(--radius)',
             padding: '28px 20px',
             textAlign: 'center',
             marginBottom: '24px',
@@ -301,20 +302,20 @@ export default function InputPage() {
           }}
         >
           <div style={{ marginBottom: '8px' }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           </div>
           {uploadLoading ? (
-            <div style={{ color: 'var(--accent-primary)', fontWeight: 600, fontSize: '0.9rem' }}>Scanning document...</div>
+            <div style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.9rem' }}>Scanning document...</div>
           ) : (
             <>
-              <div style={{ marginBottom: '4px', fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}>Drop your resume here, or click to browse</div>
-              <div style={{ color: 'var(--text-secondary)', fontSize: '0.82rem' }}>PDF only — skills and CGPA will be auto-extracted</div>
+              <div style={{ marginBottom: '4px', fontSize: '0.95rem', fontWeight: 600, color: 'var(--ink)' }}>Drop your resume here, or click to browse</div>
+              <div style={{ color: 'var(--ink-subtle)', fontSize: '0.82rem' }}>PDF only — skills and CGPA will be auto-extracted</div>
             </>
           )}
           <input type="file" ref={fileInputRef} onChange={handleFileSelect} accept=".pdf" style={{ display: 'none' }} />
         </div>
 
-        <div style={{ background: 'var(--panel-bg)', padding: '28px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--panel-border)', boxShadow: 'var(--shadow-sm)' }}>
+        <div style={{ background: 'var(--white)', padding: '28px', borderRadius: 'var(--radius)', border: '1px solid #ddd8ce' }}>
           <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '20px' }}>
             
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
@@ -330,7 +331,7 @@ export default function InputPage() {
                 <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span>CGPA</span>
                   {/* Scale Toggle */}
-                  <span style={{ display: 'flex', gap: '2px', background: 'var(--bg-color)', borderRadius: 'var(--radius-sm)', padding: '2px', border: '1px solid var(--panel-border)' }}>
+                  <span style={{ display: 'flex', gap: '2px', background: 'var(--surface)', borderRadius: 'var(--radius-sm)', padding: '2px', border: '1px solid #ddd8ce' }}>
                     {[10, 4].map(s => (
                       <button
                         key={s}
@@ -343,8 +344,8 @@ export default function InputPage() {
                           cursor: 'pointer',
                           fontSize: '0.72rem',
                           fontWeight: 600,
-                          background: cgpaScale === s ? 'var(--accent-primary)' : 'transparent',
-                          color: cgpaScale === s ? '#fff' : 'var(--text-secondary)',
+                          background: cgpaScale === s ? 'var(--accent)' : 'transparent',
+                          color: cgpaScale === s ? '#fff' : 'var(--ink-muted)',
                           transition: 'all 0.15s ease'
                         }}
                       >
@@ -366,7 +367,7 @@ export default function InputPage() {
                   required
                 />
                 {cgpaScale === 4 && formData.cgpa && (
-                  <p style={{ margin: '4px 0 0', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+                  <p style={{ margin: '4px 0 0', fontSize: '0.78rem', color: 'var(--ink-muted)' }}>
                     ≈ {Math.round((parseFloat(formData.cgpa) / 4.0) * 10 * 100) / 100} on 10-point scale
                   </p>
                 )}
@@ -378,14 +379,14 @@ export default function InputPage() {
               <input type="text" className="input-control" name="skills" placeholder="Python, SQL, React, Docker..." value={formData.skills} onChange={handleChange} required />
             </div>
 
-            <hr style={{ border: 'none', borderTop: '1px solid var(--panel-border)', margin: '4px 0' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid #ddd8ce', margin: '4px 0' }} />
 
             {/* ===== DYNAMIC INTERNSHIPS SECTION ===== */}
             <div>
               <div style={sectionHeaderStyle}>
                 <div>
                   <label style={sectionLabelStyle}>Internships</label>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.78rem', margin: '2px 0 0' }}>
+                  <p style={{ color: 'var(--ink-muted)', fontSize: '0.78rem', margin: '2px 0 0' }}>
                     Companies are verified against a database of 100+ institutions.
                   </p>
                 </div>
@@ -411,7 +412,7 @@ export default function InputPage() {
                   {formData.internships.map((intern, idx) => (
                     <div key={idx} style={cardStyle}>
                       <div style={cardHeaderStyle}>
-                        <span style={{ fontWeight: 600, fontSize: '0.82rem', color: 'var(--text-secondary)' }}>Internship {idx + 1}</span>
+                        <span style={{ fontWeight: 600, fontSize: '0.82rem', color: 'var(--ink-muted)' }}>Internship {idx + 1}</span>
                         <button type="button" onClick={() => removeInternship(idx)} style={{ color: 'var(--danger)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.82rem' }}>Remove</button>
                       </div>
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
@@ -437,7 +438,7 @@ export default function InputPage() {
                     </div>
                   ))}
                   {formData.internships.length === 0 && (
-                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', textAlign: 'center', padding: '6px 0' }}>
+                    <div style={{ color: 'var(--ink-muted)', fontSize: '0.85rem', textAlign: 'center', padding: '6px 0' }}>
                       No internships added. Click "+ Add" above.
                     </div>
                   )}
@@ -445,7 +446,7 @@ export default function InputPage() {
               )}
             </div>
 
-            <hr style={{ border: 'none', borderTop: '1px solid var(--panel-border)', margin: '4px 0' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid #ddd8ce', margin: '4px 0' }} />
 
             {/* ===== DYNAMIC PROJECTS SECTION ===== */}
             <div>
@@ -473,7 +474,7 @@ export default function InputPage() {
                   {formData.projects.map((proj, idx) => (
                     <div key={idx} style={cardStyle}>
                       <div style={cardHeaderStyle}>
-                        <span style={{ fontWeight: 600, fontSize: '0.82rem', color: 'var(--text-secondary)' }}>Project {idx + 1}</span>
+                        <span style={{ fontWeight: 600, fontSize: '0.82rem', color: 'var(--ink-muted)' }}>Project {idx + 1}</span>
                         <button type="button" onClick={() => removeProject(idx)} style={{ color: 'var(--danger)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.82rem' }}>Remove</button>
                       </div>
                       <div className="input-group" style={{ marginBottom: '10px' }}>
@@ -484,19 +485,19 @@ export default function InputPage() {
                       </div>
                     </div>
                   ))}
-                  {formData.projects.length === 0 && <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', textAlign: 'center', padding: '6px 0' }}>No projects added. Click "+ Add" above.</div>}
+                  {formData.projects.length === 0 && <div style={{ color: 'var(--ink-muted)', fontSize: '0.85rem', textAlign: 'center', padding: '6px 0' }}>No projects added. Click "+ Add" above.</div>}
                 </div>
               )}
             </div>
 
-            <hr style={{ border: 'none', borderTop: '1px solid var(--panel-border)', margin: '4px 0' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid #ddd8ce', margin: '4px 0' }} />
 
             {/* ===== DYNAMIC CERTIFICATES SECTION ===== */}
             <div>
               <div style={sectionHeaderStyle}>
                 <div>
                   <label style={sectionLabelStyle}>Certificates</label>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.78rem', margin: '2px 0 0' }}>Type the name or upload a PDF — both supported per entry.</p>
+                  <p style={{ color: 'var(--ink-muted)', fontSize: '0.78rem', margin: '2px 0 0' }}>Type the name or upload a PDF — both supported per entry.</p>
                 </div>
                 {!noCertificates && (
                   <button type="button" onClick={addCertificate} className="btn btn-secondary" style={{ padding: '5px 10px', fontSize: '0.8rem', flexShrink: 0 }}>+ Add</button>
@@ -521,18 +522,18 @@ export default function InputPage() {
                     <div key={idx} style={cardStyle}>
                       {/* Header */}
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                        <span style={{ fontWeight: 600, fontSize: '0.82rem', color: 'var(--text-secondary)' }}>Certificate {idx + 1}</span>
+                        <span style={{ fontWeight: 600, fontSize: '0.82rem', color: 'var(--ink-muted)' }}>Certificate {idx + 1}</span>
                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                           {/* Mode Toggle */}
-                          <span style={{ display: 'flex', gap: '2px', background: 'var(--panel-bg)', borderRadius: 'var(--radius-sm)', padding: '2px', border: '1px solid var(--panel-border)' }}>
+                          <span style={{ display: 'flex', gap: '2px', background: 'var(--white)', borderRadius: 'var(--radius-sm)', padding: '2px', border: '1px solid #ddd8ce' }}>
                             {['type', 'upload'].map(m => (
                               <button key={m} type="button"
                                 onClick={() => updateCertificate(idx, 'mode', m)}
                                 style={{
                                   padding: '2px 8px', borderRadius: '4px', border: 'none',
                                   cursor: 'pointer', fontSize: '0.72rem', fontWeight: 600,
-                                  background: cert.mode === m ? 'var(--accent-primary)' : 'transparent',
-                                  color: cert.mode === m ? '#fff' : 'var(--text-secondary)',
+                                  background: cert.mode === m ? 'var(--accent)' : 'transparent',
+                                  color: cert.mode === m ? '#fff' : 'var(--ink-muted)',
                                   transition: 'all 0.15s ease'
                                 }}
                               >
@@ -560,7 +561,7 @@ export default function InputPage() {
                       {cert.mode === 'upload' && (
                         <div>
                           {cert.uploading ? (
-                            <div style={{ padding: '16px', textAlign: 'center', color: 'var(--accent-primary)', fontWeight: 600, fontSize: '0.85rem', border: '1.5px dashed var(--accent-primary)', borderRadius: 'var(--radius-sm)' }}>
+                            <div style={{ padding: '16px', textAlign: 'center', color: 'var(--accent)', fontWeight: 600, fontSize: '0.85rem', border: '1.5px dashed var(--accent)', borderRadius: 'var(--radius-sm)' }}>
                               Scanning PDF...
                             </div>
                           ) : cert.title ? (
@@ -568,12 +569,12 @@ export default function InputPage() {
                             <div style={{ padding: '12px 14px', background: 'rgba(5, 150, 105, 0.05)', border: '1px solid var(--success)', borderRadius: 'var(--radius-sm)' }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                                 <div>
-                                  <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.9rem', marginBottom: '2px' }}>{cert.title}</div>
+                                  <div style={{ fontWeight: 600, color: 'var(--ink)', fontSize: '0.9rem', marginBottom: '2px' }}>{cert.title}</div>
                                   {cert.issuer && <div style={{ fontSize: '0.78rem', color: 'var(--success)' }}>Issuer: <strong>{cert.issuer}</strong></div>}
                                   {!cert.issuer && <div style={{ fontSize: '0.78rem', color: 'var(--warning)' }}>Issuer not identified — may count as partial credit.</div>}
                                 </div>
                                 <button type="button" onClick={() => { updateCertificate(idx, 'title', ''); updateCertificate(idx, 'issuer', ''); }}
-                                  style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.78rem', flexShrink: 0 }}
+                                  style={{ color: 'var(--ink-muted)', background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.78rem', flexShrink: 0 }}
                                 >Clear</button>
                               </div>
                             </div>
@@ -587,7 +588,7 @@ export default function InputPage() {
                                 borderRadius: 'var(--radius-sm)', cursor: 'pointer', textAlign: 'center',
                                 transition: 'border-color 0.15s ease'
                               }}
-                              onDragOver={(e) => { e.preventDefault(); e.currentTarget.style.borderColor = 'var(--accent-primary)'; }}
+                              onDragOver={(e) => { e.preventDefault(); e.currentTarget.style.borderColor = 'var(--accent)'; }}
                               onDragLeave={(e) => { e.currentTarget.style.borderColor = '#c8cdd4'; }}
                               onDrop={(e) => {
                                 e.preventDefault();
@@ -595,9 +596,9 @@ export default function InputPage() {
                                 if (e.dataTransfer.files && e.dataTransfer.files[0]) uploadCertificate(idx, e.dataTransfer.files[0]);
                               }}
                             >
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>Drop certificate PDF here</span>
-                              <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>or click to browse</span>
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--ink)' }}>Drop certificate PDF here</span>
+                              <span style={{ fontSize: '0.75rem', color: 'var(--ink-muted)' }}>or click to browse</span>
                               <input
                                 id={`cert-upload-${idx}`}
                                 type="file" accept=".pdf" style={{ display: 'none' }}
@@ -609,7 +610,7 @@ export default function InputPage() {
                       )}
                     </div>
                   ))}
-                  {formData.certificates.length === 0 && <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', textAlign: 'center', padding: '6px 0' }}>No certificates added. Click "+ Add" above.</div>}
+                  {formData.certificates.length === 0 && <div style={{ color: 'var(--ink-muted)', fontSize: '0.85rem', textAlign: 'center', padding: '6px 0' }}>No certificates added. Click "+ Add" above.</div>}
                 </div>
               )}
             </div>

@@ -12,7 +12,7 @@ export default function Navbar() {
   useEffect(() => {
     setIsClient(true);
     setToken(localStorage.getItem('token'));
-  }, [pathname]); // Re-check on route change
+  }, [pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -21,27 +21,57 @@ export default function Navbar() {
   };
 
   return (
-    <nav style={{ padding: '14px 0', borderBottom: '1px solid var(--panel-border)', background: 'var(--panel-bg)' }}>
+    <nav style={{
+      padding: '12px 0',
+      background: 'var(--ink)',
+      borderBottom: 'none',
+    }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link href="/" style={{ fontSize: '1.25rem', fontWeight: '700', fontFamily: 'Outfit', color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          JAU
+        <Link href="/" style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: '1.3rem',
+          color: 'var(--white)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+        }}>
+          <span style={{
+            width: '8px', height: '8px',
+            borderRadius: '50%',
+            background: 'var(--accent)',
+            display: 'inline-block',
+          }}></span>
+          Career Path Analyzer
         </Link>
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
           {isClient && token ? (
             <>
-              <Link href="/analyze" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: 500 }}>
+              <Link href="/analyze" style={{
+                fontFamily: 'var(--font-ui)',
+                color: 'var(--ink-subtle)',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                letterSpacing: '0.02em',
+              }}>
                 Analyze
               </Link>
-              <button 
-                onClick={handleLogout} 
-                style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 500 }}
+              <button
+                onClick={handleLogout}
+                style={{
+                  background: 'none', border: 'none',
+                  fontFamily: 'var(--font-ui)',
+                  color: 'var(--ink-subtle)',
+                  cursor: 'pointer',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                }}
               >
                 Logout
               </button>
             </>
           ) : (
             isClient && (
-              <Link href="/auth" className="btn btn-primary" style={{ padding: '7px 18px', fontSize: '0.85rem' }}>
+              <Link href="/auth" className="btn btn-primary" style={{ padding: '8px 20px' }}>
                 Sign In
               </Link>
             )

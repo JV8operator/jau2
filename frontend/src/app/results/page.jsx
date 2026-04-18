@@ -16,14 +16,14 @@ export default function ResultsPage() {
     setData(JSON.parse(rawData));
   }, [router]);
 
-  if (!data) return <div style={{ color: 'var(--text-primary)', textAlign:'center', marginTop: '100px' }}>Loading...</div>;
+  if (!data) return <div style={{ color: 'var(--ink)', textAlign:'center', marginTop: '100px' }}>Loading...</div>;
 
   const scoreColor = data.category === 'High' ? 'var(--success)' : data.category === 'Moderate' ? 'var(--warning)' : 'var(--danger)';
 
   const panelStyle = {
-    background: 'var(--panel-bg)',
-    borderRadius: 'var(--radius-lg)',
-    border: '1px solid var(--panel-border)',
+    background: 'var(--white)',
+    borderRadius: 'var(--radius)',
+    border: '1px solid #ddd8ce',
     padding: '24px',
   };
 
@@ -34,7 +34,7 @@ export default function ResultsPage() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
         <div>
           <h1 style={{ fontSize: '2rem', marginBottom: '4px', letterSpacing: '-0.02em' }}>Analysis Results</h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Your placement readiness report and action plan.</p>
+          <p style={{ color: 'var(--ink-muted)', fontSize: '0.9rem' }}>Your placement readiness report and action plan.</p>
         </div>
         <Link href="/analyze" className="btn btn-secondary">
           Edit Profile
@@ -47,12 +47,12 @@ export default function ResultsPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           
           {/* Insights Panel */}
-          <div style={{ ...panelStyle, borderLeft: '3px solid var(--accent-primary)' }}>
+          <div style={{ ...panelStyle, borderLeft: '3px solid var(--accent)' }}>
             <h3 style={{ marginBottom: '14px', fontSize: '1rem', fontWeight: 700 }}>Key Insights</h3>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {data.insights.map((insight, idx) => (
-                <li key={idx} style={{ color: 'var(--text-secondary)', lineHeight: 1.55, display: 'flex', gap: '10px', fontSize: '0.9rem' }}>
-                  <span style={{ color: 'var(--accent-primary)', fontWeight: 700, flexShrink: 0 }}>—</span>
+                <li key={idx} style={{ color: 'var(--ink-muted)', lineHeight: 1.55, display: 'flex', gap: '10px', fontSize: '0.9rem' }}>
+                  <span style={{ color: 'var(--accent)', fontWeight: 700, flexShrink: 0 }}>—</span>
                   {insight}
                 </li>
               ))}
@@ -63,7 +63,7 @@ export default function ResultsPage() {
           {data.project_quality && (
             <div style={{ ...panelStyle, borderLeft: '3px solid #7c3aed' }}>
               <h3 style={{ marginBottom: '4px', fontSize: '1rem', fontWeight: 700 }}>Project Quality</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '16px' }}>
+              <p style={{ color: 'var(--ink-muted)', fontSize: '0.82rem', marginBottom: '16px' }}>
                 Scored on description depth, tech stack, and real-world impact.
               </p>
               {/* Per-project scores */}
@@ -72,9 +72,9 @@ export default function ResultsPage() {
                   {data.project_quality.project_scores.map((score, idx) => {
                     const col = score >= 7 ? 'var(--success)' : score >= 4 ? 'var(--warning)' : 'var(--danger)';
                     return (
-                      <div key={idx} style={{ background: 'var(--bg-color)', padding: '10px 16px', borderRadius: 'var(--radius-md)', border: `1px solid ${col}`, textAlign: 'center', minWidth: '70px' }}>
+                      <div key={idx} style={{ background: 'var(--surface)', padding: '10px 16px', borderRadius: 'var(--radius-sm)', border: `1px solid ${col}`, textAlign: 'center', minWidth: '70px' }}>
                         <div style={{ fontSize: '1.2rem', fontWeight: 700, color: col }}>{score}/10</div>
-                        <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: '2px' }}>Project {idx + 1}</div>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--ink-muted)', marginTop: '2px' }}>Project {idx + 1}</div>
                       </div>
                     );
                   })}
@@ -83,7 +83,7 @@ export default function ResultsPage() {
               {/* Feedback */}
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {data.project_quality.feedback.map((fb, idx) => (
-                  <li key={idx} style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', display: 'flex', gap: '8px' }}>
+                  <li key={idx} style={{ color: 'var(--ink-muted)', fontSize: '0.85rem', display: 'flex', gap: '8px' }}>
                     <span style={{ color: '#7c3aed', flexShrink: 0 }}>→</span>{fb}
                   </li>
                 ))}
@@ -95,27 +95,27 @@ export default function ResultsPage() {
           {data.cert_quality && (
             <div style={{ ...panelStyle, borderLeft: '3px solid var(--warning)' }}>
               <h3 style={{ marginBottom: '4px', fontSize: '1rem', fontWeight: 700 }}>Certificate Evaluation</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '16px' }}>
+              <p style={{ color: 'var(--ink-muted)', fontSize: '0.82rem', marginBottom: '16px' }}>
                 Only professional/technical certificates from recognised issuers are counted.
               </p>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '14px' }}>
-                <div style={{ background: 'var(--bg-color)', padding: '10px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--success)', textAlign: 'center' }}>
+                <div style={{ background: 'var(--surface)', padding: '10px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--success)', textAlign: 'center' }}>
                   <div style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--success)' }}>{data.cert_quality.valid_count}</div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>Recognised</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--ink-muted)' }}>Recognised</div>
                 </div>
-                <div style={{ background: 'var(--bg-color)', padding: '10px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--warning)', textAlign: 'center' }}>
+                <div style={{ background: 'var(--surface)', padding: '10px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--warning)', textAlign: 'center' }}>
                   <div style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--warning)' }}>{data.cert_quality.partial_count}</div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>Partial</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--ink-muted)' }}>Partial</div>
                 </div>
-                <div style={{ background: 'var(--bg-color)', padding: '10px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--danger)', textAlign: 'center' }}>
+                <div style={{ background: 'var(--surface)', padding: '10px 16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--danger)', textAlign: 'center' }}>
                   <div style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--danger)' }}>{data.cert_quality.ignored_count}</div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>Not Counted</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--ink-muted)' }}>Not Counted</div>
                 </div>
               </div>
               {data.cert_quality.feedback.length > 0 && (
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {data.cert_quality.feedback.map((fb, idx) => (
-                    <li key={idx} style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', display: 'flex', gap: '8px' }}>
+                    <li key={idx} style={{ color: 'var(--ink-muted)', fontSize: '0.85rem', display: 'flex', gap: '8px' }}>
                       <span style={{ color: 'var(--warning)', flexShrink: 0 }}>→</span>{fb}
                     </li>
                   ))}
@@ -130,21 +130,21 @@ export default function ResultsPage() {
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative' }}>
               {/* Timeline line */}
-              <div style={{ position: 'absolute', left: '13px', top: '16px', bottom: '16px', width: '1.5px', background: 'var(--panel-border)', zIndex: 0 }}></div>
+              <div style={{ position: 'absolute', left: '13px', top: '16px', bottom: '16px', width: '1.5px', background: '#ddd8ce', zIndex: 0 }}></div>
               
               {data.roadmap.map((step, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '18px', zIndex: 1, position: 'relative' }}>
-                  <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--panel-bg)', border: '2px solid var(--accent-primary)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: '700', color: 'var(--accent-primary)' }}>
+                  <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--white)', border: '2px solid var(--accent)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: '700', color: 'var(--accent)' }}>
                     {idx + 1}
                   </div>
-                  <div style={{ background: 'var(--bg-color)', padding: '16px', borderRadius: 'var(--radius-md)', flexGrow: 1, border: '1px solid var(--panel-border)' }}>
+                  <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-sm)', flexGrow: 1, border: '1px solid #ddd8ce' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', alignItems: 'center' }}>
-                      <h4 style={{ color: 'var(--text-primary)', fontSize: '0.95rem', fontWeight: 600 }}>{step.skill}</h4>
-                      <span style={{ color: 'var(--accent-primary)', fontSize: '0.75rem', fontWeight: 600, background: 'rgba(26, 86, 219, 0.06)', padding: '3px 8px', borderRadius: 'var(--radius-sm)' }}>{step.week}</span>
+                      <h4 style={{ color: 'var(--ink)', fontSize: '0.95rem', fontWeight: 600 }}>{step.skill}</h4>
+                      <span style={{ color: 'var(--accent)', fontSize: '0.75rem', fontWeight: 600, background: 'rgba(26, 86, 219, 0.06)', padding: '3px 8px', borderRadius: 'var(--radius-sm)' }}>{step.week}</span>
                     </div>
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                       {step.tasks.map((task, tidx) => (
-                        <li key={tidx} style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '4px', display: 'flex', gap: '8px' }}>
+                        <li key={tidx} style={{ color: 'var(--ink-muted)', fontSize: '0.85rem', marginBottom: '4px', display: 'flex', gap: '8px' }}>
                           <span style={{ opacity: 0.4, flexShrink: 0 }}>→</span> {task}
                         </li>
                       ))}
@@ -164,8 +164,8 @@ export default function ResultsPage() {
                 const gapColor = isAhead ? 'var(--success)' : 'var(--danger)';
                 const gapText = isAhead ? '+' : '';
                 return (
-                  <div key={metric} style={{ background: 'var(--bg-color)', padding: '16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--panel-border)' }}>
-                    <div style={{ textTransform: 'capitalize', color: 'var(--text-secondary)', fontSize: '0.8rem', marginBottom: '6px' }}>{metric}</div>
+                  <div key={metric} style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid #ddd8ce' }}>
+                    <div style={{ textTransform: 'capitalize', color: 'var(--ink-muted)', fontSize: '0.8rem', marginBottom: '6px' }}>{metric}</div>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
                       <div style={{ fontSize: '1.5rem', fontWeight: '700', fontFamily: 'Outfit' }}>{data.benchmarks.placed_averages[metric]}</div>
                       <div style={{ color: gapColor, fontSize: '0.82rem', fontWeight: 600 }}>
@@ -184,11 +184,11 @@ export default function ResultsPage() {
           
           {/* Main Score Card */}
           <div style={{ ...panelStyle, textAlign: 'center' }}>
-            <div style={{ marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.82rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Readiness Score</div>
+            <div style={{ marginBottom: '6px', color: 'var(--ink-muted)', fontSize: '0.82rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Readiness Score</div>
             
             <div style={{ position: 'relative', width: '140px', height: '140px', margin: '0 auto 16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="140" height="140" viewBox="0 0 140 140" style={{ transform: 'rotate(-90deg)' }}>
-                <circle cx="70" cy="70" r="60" fill="none" stroke="var(--panel-border)" strokeWidth="8" />
+                <circle cx="70" cy="70" r="60" fill="none" stroke="#ddd8ce" strokeWidth="8" />
                 <circle cx="70" cy="70" r="60" fill="none" stroke={scoreColor} strokeWidth="8" 
                   strokeDasharray={`${2 * Math.PI * 60}`} 
                   strokeDashoffset={`${2 * Math.PI * 60 * (1 - (data.readiness_score/100))}`}
@@ -203,40 +203,40 @@ export default function ResultsPage() {
             
             <div style={{ color: scoreColor, fontWeight: 600, fontSize: '1rem', marginBottom: '16px' }}>{data.category} Readiness</div>
             
-            <div style={{ background: 'var(--bg-color)', padding: '12px', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.03em' }}>Placement Likelihood</div>
-              <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>{data.placement_probability}%</div>
+            <div style={{ background: 'var(--surface)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
+              <div style={{ fontSize: '0.78rem', color: 'var(--ink-muted)', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.03em' }}>Placement Likelihood</div>
+              <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--ink)' }}>{data.placement_probability}%</div>
             </div>
           </div>
 
           {/* Skill Gaps Card */}
           <div style={panelStyle}>
             <h3 style={{ marginBottom: '4px', fontSize: '0.95rem', fontWeight: 700 }}>Skill Analysis</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.78rem', marginBottom: '14px' }}>{data.skill_match_percentage}% match</p>
+            <p style={{ color: 'var(--ink-muted)', fontSize: '0.78rem', marginBottom: '14px' }}>{data.skill_match_percentage}% match</p>
             {data.tier_breakdown && (
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', marginBottom: '14px', lineHeight: 1.5 }}>
+              <p style={{ color: 'var(--ink-muted)', fontSize: '0.75rem', marginBottom: '14px', lineHeight: 1.5 }}>
                 Core: {data.tier_breakdown.tier1_matched}/{data.tier_breakdown.tier1_total} &nbsp;·&nbsp;
                 Strong: {data.tier_breakdown.tier2_matched}/{data.tier_breakdown.tier2_total} &nbsp;·&nbsp;
                 Bonus: {data.tier_breakdown.tier3_matched}/{data.tier_breakdown.tier3_total}
               </p>
             )}
             <div style={{ marginBottom: '14px' }}>
-              <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '6px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Matched</div>
+              <div style={{ fontSize: '0.78rem', color: 'var(--ink-muted)', marginBottom: '6px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Matched</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                 {data.matched_skills.map(s => (
                   <span key={s} style={{ background: 'rgba(5, 150, 105, 0.08)', color: 'var(--success)', padding: '3px 8px', borderRadius: 'var(--radius-sm)', fontSize: '0.78rem', fontWeight: 500 }}>{s}</span>
                 ))}
-                {data.matched_skills.length === 0 && <span style={{color:'var(--text-secondary)', fontSize:'0.8rem'}}>None</span>}
+                {data.matched_skills.length === 0 && <span style={{color:'var(--ink-muted)', fontSize:'0.8rem'}}>None</span>}
               </div>
             </div>
 
             <div>
-              <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '6px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Missing</div>
+              <div style={{ fontSize: '0.78rem', color: 'var(--ink-muted)', marginBottom: '6px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Missing</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                 {data.missing_skills.map(s => (
                   <span key={s} style={{ background: 'rgba(220, 38, 38, 0.08)', color: 'var(--danger)', padding: '3px 8px', borderRadius: 'var(--radius-sm)', fontSize: '0.78rem', fontWeight: 500 }}>{s}</span>
                 ))}
-                {data.missing_skills.length === 0 && <span style={{color:'var(--text-secondary)', fontSize:'0.8rem'}}>None</span>}
+                {data.missing_skills.length === 0 && <span style={{color:'var(--ink-muted)', fontSize:'0.8rem'}}>None</span>}
               </div>
             </div>
           </div>
