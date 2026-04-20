@@ -151,23 +151,76 @@ export default function InputPage() {
       }
 
       const result = await res.json();
-      
-      // Auto-fill form from resume
       const updates = {};
+
+      // Auto-fill CGPA
       if (result.cgpa) {
         updates.cgpa = result.cgpa;
         setCgpaScale(result.cgpa_scale || 10);
       }
-      
+
+      // Auto-fill skills (merge with existing)
       if (result.skills && result.skills.length > 0) {
         const currentSkills = formData.skills.split(',').map(s => s.trim()).filter(s => s);
-        const newSkills = [...new Set([...currentSkills, ...result.skills])];
-        updates.skills = newSkills.join(', ');
+        const merged = [...new Set([...currentSkills, ...result.skills])];
+        updates.skills = merged.join(', ');
       }
-      
+
+      // Auto-fill projects (replace if empty, merge if already have some)
+      if (result.projects && result.projects.length > 0) {
+        const existingProjects = formData.projects.filter(p => p.title || p.description);
+        if (existingProjects.length === 0) {
+          updates.projects = result.projects;
+          setNoProjects(false);
+        } else {
+          // Merge without duplicates
+          const existingTitles = new Set(existingProjects.map(p => p.title.toLowerCase()));
+          const newProjects = result.projects.filter(p => !existingTitles.has(p.title.toLowerCase()));
+          updates.projects = [...existingProjects, ...newProjects];
+        }
+      }
+
+      // Auto-fill internships
+      if (result.internships && result.internships.length > 0) {
+        const existingInternships = formData.internships.filter(i => i.company || i.role);
+        if (existingInternships.length === 0) {
+          updates.internships = result.internships;
+          setNoInternships(false);
+        } else {
+          const existingCompanies = new Set(existingInternships.map(i => i.company.toLowerCase()));
+          const newInternships = result.internships.filter(i => !existingCompanies.has(i.company.toLowerCase()));
+          updates.internships = [...existingInternships, ...newInternships];
+        }
+      }
+
+      // Auto-fill certificates
+      if (result.certificates && result.certificates.length > 0) {
+        const existingCerts = formData.certificates.filter(c => c.title);
+        if (existingCerts.length === 0) {
+          updates.certificates = result.certificates.map(c => ({ ...c, mode: 'type', uploading: false, issuer: '' }));
+          setNoCertificates(false);
+        } else {
+          const existingTitles = new Set(existingCerts.map(c => c.title.toLowerCase()));
+          const newCerts = result.certificates
+            .filter(c => !existingTitles.has(c.title.toLowerCase()))
+            .map(c => ({ ...c, mode: 'type', uploading: false, issuer: '' }));
+          updates.certificates = [...existingCerts, ...newCerts];
+        }
+      }
+
       setFormData(prev => ({ ...prev, ...updates }));
-      alert(`Parsed! Extracted ${result.skills?.length || 0} skills.`);
-      
+
+      // Show summary
+      const summary = [
+        result.skills_count ? `${result.skills_count} skills` : null,
+        result.projects_count ? `${result.projects_count} projects` : null,
+        result.internships_count ? `${result.internships_count} internships` : null,
+        result.certificates_count ? `${result.certificates_count} certificates` : null,
+        result.cgpa ? `CGPA ${result.cgpa}` : null,
+      ].filter(Boolean);
+
+      alert(`Resume parsed! Auto-filled: ${summary.join(', ') || 'No data found'}. Please review and edit as needed.`);
+
     } catch (err) {
       setError(err.message);
     } finally {
@@ -624,3 +677,4 @@ export default function InputPage() {
     </div>
   );
 }
+
