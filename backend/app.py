@@ -14,7 +14,10 @@ from engines.readiness_scorer import compute_readiness_score
 from engines.benchmarking_engine import generate_benchmarks
 from engines.roadmap_generator import generate_roadmap
 from engines.insight_engine import generate_insights
-from engines.doc_parser import extract_text_from_pdf, scan_for_skills, extract_cgpa, extract_certificate_info
+from engines.doc_parser import (
+    extract_text_from_pdf, scan_for_skills, extract_cgpa, extract_certificate_info,
+    extract_projects_from_resume, extract_internships_from_resume, extract_certificates_from_resume
+)
 from engines.quality_evaluator import evaluate_project_quality, evaluate_certificates
 from engines.internship_engine import evaluate_internships
 
@@ -168,10 +171,20 @@ def upload_document(current_user):
         if doc_type == 'resume':
             skills = scan_for_skills(text, branch)
             cgpa_data = extract_cgpa(text)
+            projects = extract_projects_from_resume(text)
+            internships = extract_internships_from_resume(text)
+            certificates = extract_certificates_from_resume(text)
             result["skills"] = skills
+            result["projects"] = projects
+            result["internships"] = internships
+            result["certificates"] = certificates
+            result["skills_count"] = len(skills)
+            result["projects_count"] = len(projects)
+            result["internships_count"] = len(internships)
+            result["certificates_count"] = len(certificates)
             if cgpa_data:
                 result["cgpa"] = cgpa_data["cgpa"]
-                result["cgpa_scale"] = cgpa_data["scale"]  # 4 or 10
+                result["cgpa_scale"] = cgpa_data["scale"]
         elif doc_type == 'certificate':
             cert_info = extract_certificate_info(text)
             result["cert_title"] = cert_info["title"]
