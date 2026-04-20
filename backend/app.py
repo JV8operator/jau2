@@ -14,10 +14,7 @@ from engines.readiness_scorer import compute_readiness_score
 from engines.benchmarking_engine import generate_benchmarks
 from engines.roadmap_generator import generate_roadmap
 from engines.insight_engine import generate_insights
-from engines.doc_parser import (
-    extract_text_from_pdf, scan_for_skills, extract_cgpa, extract_certificate_info,
-    extract_projects_from_resume, extract_internships_from_resume, extract_certificates_from_resume
-)
+from engines.doc_parser import extract_text_from_pdf, scan_for_skills, extract_cgpa, extract_certificate_info
 from engines.quality_evaluator import evaluate_project_quality, evaluate_certificates
 from engines.internship_engine import evaluate_internships
 
@@ -169,19 +166,11 @@ def upload_document(current_user):
         result = {"extracted_text_preview": text[:200] + "..."}
         
         if doc_type == 'resume':
-            skills = scan_for_skills(text, branch)
+            flat_skills, categorized_skills = scan_for_skills(text, branch)
             cgpa_data = extract_cgpa(text)
-            projects = extract_projects_from_resume(text)
-            internships = extract_internships_from_resume(text)
-            certificates = extract_certificates_from_resume(text)
-            result["skills"] = skills
-            result["projects"] = projects
-            result["internships"] = internships
-            result["certificates"] = certificates
-            result["skills_count"] = len(skills)
-            result["projects_count"] = len(projects)
-            result["internships_count"] = len(internships)
-            result["certificates_count"] = len(certificates)
+            result["skills"] = flat_skills
+            result["skills_categorized"] = categorized_skills
+            result["skills_count"] = len(flat_skills)
             if cgpa_data:
                 result["cgpa"] = cgpa_data["cgpa"]
                 result["cgpa_scale"] = cgpa_data["scale"]
@@ -190,7 +179,7 @@ def upload_document(current_user):
             result["cert_title"] = cert_info["title"]
             result["cert_issuer"] = cert_info["issuer"]
             result["raw_excerpt"] = cert_info["raw_excerpt"]
-            
+
         return jsonify(result)
     except Exception as e:
         import traceback
