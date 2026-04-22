@@ -73,7 +73,7 @@ def analyze(current_user):
         for proj in projects_raw:
             desc = proj.get('description', '')
             if desc:
-                extra_skills = scan_for_skills(desc, branch)
+                extra_skills, _ = scan_for_skills(desc, branch)
                 skills.extend(extra_skills)
 
         # Remove duplicates
