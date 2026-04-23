@@ -203,10 +203,6 @@ export default function ResultsPage() {
             
             <div style={{ color: scoreColor, fontWeight: 600, fontSize: '1rem', marginBottom: '16px' }}>{data.category} Readiness</div>
             
-            <div style={{ background: 'var(--surface)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
-              <div style={{ fontSize: '0.78rem', color: 'var(--ink-muted)', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.03em' }}>Placement Likelihood</div>
-              <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--ink)' }}>{data.placement_probability}%</div>
-            </div>
           </div>
 
           {/* Skill Gaps Card */}
